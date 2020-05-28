@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 from math import sqrt
-from decimal import getcontext, Decimal
-PRECISION = 20
 
 class IsntVectorError(TypeError):
     pass
@@ -16,6 +14,10 @@ class Vector:
         self.comp = [float(i) for i in comp]
         self.degree = len(self.comp)
 
+    def __len__(self, comp):
+        """ return the number of components of the vector """
+        return len(self.comp)
+
     def __repr__(self):
         """ return repr(self) """
         return "Vector({})".format(self.comp)
@@ -28,14 +30,14 @@ class Vector:
         """ return True if value is a vector with same number of 
         components else raise some errors"""    
         if isinstance(value, Vector):
-            if self.degree == value.degree: return True
+            if len(self) == len(value): return True
             else: raise NotSameDegreeError(value)
         else: raise IsntVectorError(value)
 
     def __add__(self, value):
         """ return self + value """
         if self.check(value):
-            sum_comp = [self.comp[i]+value.comp[i] for i in range(self.degree)]
+            sum_comp = [self.comp[i]+value.comp[i] for i in range(len(self))]
             return Vector(sum_comp)
 
     def __neg__(self):
@@ -49,10 +51,8 @@ class Vector:
 
     def __abs__(self):
         """ return |self| (magnitude/module of a vector) """
-        global PRECISION
-        getcontext().prec = PRECISION   
-        k = Decimal(0)
-        for i in self.comp: k += Decimal(i)**2
+        k = 0
+        for i in self.comp: k += i**2
         return sqrt(k)
 
     def __mul__(self, value):
@@ -65,7 +65,7 @@ class Vector:
     def scal_mul(self, value):
         """ return self x value """
         if self.check(value):
-            scal_mul_comp = [self.comp[i]*value.comp[i] for i in range(self.degree)]
+            scal_mul_comp = [self.comp[i]*value.comp[i] for i in range(len(self))]
             return Vector(scal_mul_comp)
 
     def vect_mul(self, value):
