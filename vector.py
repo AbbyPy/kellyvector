@@ -12,7 +12,6 @@ class Vector:
     def __init__(self, comp):
         """ pass the components of a vector in a list """
         self.comp = [float(i) for i in comp]
-        self.degree = len(self.comp)
 
     def __len__(self, comp):
         """ return the number of components of the vector """
@@ -37,6 +36,14 @@ class Vector:
     def __getitem__(self, key):
         """ return self.comp[key] """
         return self.comp[key]
+
+    def __setitem__(self, key, value):
+        """ set in self[key] a new value """
+        self.comp[key] = float(value)
+
+    def __delitem__(self, key):
+        """ delete self[key] """
+        del(self.comp[key])
 
     def __add__(self, value):
         """ return self + value """
