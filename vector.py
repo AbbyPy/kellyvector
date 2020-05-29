@@ -34,9 +34,9 @@ class Vector:
             else: raise NotSameDegreeError(value)
         else: raise IsntVectorError(value)
 
-    def __get_item__(self, value):
-        """ return self.comp[value] """
-        return self.comp[value]
+    def __getitem__(self, key):
+        """ return self.comp[key] """
+        return self.comp[key]
 
     def __add__(self, value):
         """ return self + value """
