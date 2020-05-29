@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from math import sqrt
 
 class IsntVectorError(TypeError):
     pass
@@ -64,7 +63,7 @@ class Vector:
         """ return |self| (magnitude/module of a vector) """
         k = 0
         for i in self.comp: k += i**2
-        return sqrt(k)
+        return k**(.5)
 
     def __mul__(self, value):
         """ return vector * pure number """
