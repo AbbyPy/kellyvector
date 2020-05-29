@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+""" Giorgio Abbadessa - gio.abbadessa@gmail.com """
+
 class IsntVectorError(TypeError):
     pass
 
