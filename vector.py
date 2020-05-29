@@ -22,7 +22,7 @@ class Vector:
         """ return str(self) """
         return "{}".format(self.comp)
 
-    def __len__(self, comp):
+    def __len__(self):
         """ return the number of components of the vector """
         return len(self.comp)
 
@@ -86,10 +86,10 @@ class Vector:
 
     def vect_mul(self, value):
         """ return self x value (self and value must be 2d)"""
-        if check(self, value) and len(self) == 2:
+        if ((self.check(value)) and (len(self) == 2)):
             v, w = self, value
-            v.append(0)
-            w.append(0)
+            v.append(0.0)
+            w.append(0.0)
             vect_mul_comp = [
             v[1] * w[2] - v[2] * w[1],
             v[2] * w[0] - v[0] * w[2],
