@@ -26,8 +26,8 @@ class Vector:
         return "{}".format(self.comp)
 
     def check(self, value):
-        """ return True if value is a vector with same number of 
-        components else raise some errors"""    
+        """ return True if value is a vector with same number of
+        components else raise some errors"""
         if isinstance(value, Vector):
             if len(self) == len(value): return True
             else: raise NotSameDegreeError(value)
@@ -117,3 +117,6 @@ class Vector:
     def __ge__(self, value):
         """ return self >= value """
         return ((self > value) or (self == value))
+
+    def easteregg(self):
+        print("you've found the easter egg, LOL")
