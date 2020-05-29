@@ -14,10 +14,6 @@ class Vector:
         """ pass the components of a vector in a list """
         self.comp = [float(i) for i in comp]
 
-    def __len__(self, comp):
-        """ return the number of components of the vector """
-        return len(self.comp)
-
     def __repr__(self):
         """ return repr(self) """
         return "Vector({})".format(self.comp)
@@ -26,13 +22,9 @@ class Vector:
         """ return str(self) """
         return "{}".format(self.comp)
 
-    def check(self, value):
-        """ return True if value is a vector with same number of
-        components else raise some errors"""
-        if isinstance(value, Vector):
-            if len(self) == len(value): return True
-            else: raise NotSameDegreeError(value)
-        else: raise IsntVectorError(value)
+    def __len__(self, comp):
+        """ return the number of components of the vector """
+        return len(self.comp)
 
     def __getitem__(self, key):
         """ return self.comp[key] """
@@ -50,15 +42,23 @@ class Vector:
         """ append value to vector components """
         self.comp.append(float(value))
 
+    def check(self, value):
+        """ return True if value is a vector with same number of
+        components else raise some errors"""
+        if isinstance(value, Vector):
+            if len(self) == len(value): return True
+            else: raise NotSameDegreeError(value)
+        else: raise IsntVectorError(value)
+
     def __add__(self, value):
         """ return self + value """
         if self.check(value):
-            sum_comp = [self.comp[i]+value.comp[i] for i in range(len(self))]
+            sum_comp = [self[i]+value[i] for i in range(len(self))]
             return Vector(sum_comp)
 
     def __neg__(self):
         """ return -self """
-        neg_comp = [-i for i in self.comp]
+        neg_comp = [-i for i in self]
         return Vector(neg_comp)
 
     def __sub__(self, value):
@@ -68,25 +68,24 @@ class Vector:
     def __abs__(self):
         """ return |self| (magnitude/module of a vector) """
         k = 0
-        for i in self.comp: k += i**2
+        for i in self: k += i**2
         return k**(.5)
 
     def __mul__(self, value):
         """ return vector * pure number """
         if type(value) == float or type(value) == int:
-            mul_comp = [value*i for i in self.comp]
+            mul_comp = [value*i for i in self]
             return Vector(mul_comp)
         else: raise TypeError(value, "must be a number")
 
     def scal_mul(self, value):
-        """ return self x value """
+        """ return self · value """
         if self.check(value):
-            scal_mul_comp = [self.comp[i]*value.comp[i] for i in range(len(self))]
+            scal_mul_comp = [self[i]*value[i] for i in range(len(self))]
             return Vector(scal_mul_comp)
 
     def vect_mul(self, value):
-        """ return self · value """
-        # not yet implemented, coming sonn
+        """ return self x value (self and value must be 2d)"""
         pass
 
     def __truediv__(self, value):
