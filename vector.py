@@ -44,6 +44,10 @@ class Vector:
         """ delete self[key] """
         del(self.comp[key])
 
+    def append(self, value):
+        """ append value to vector components """
+        self.comp.append(float(value))
+
     def __add__(self, value):
         """ return self + value """
         if self.check(value):
