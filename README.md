@@ -21,6 +21,6 @@ b = v.Vector([1, 3, 9])
 c = a + b	# vettore somma
 c = -a		# vettore inverso
 c = a - b	# vettore differenza
-c = |a|		# modulo del vettore
+c = abs(a)     	# modulo del vettore
 ```
-Attenzione !!! Per svolgere qualsiasi operazione i vettori devono avere lo stesso numero di componenti e dunque didimesioni. Qualora questa condizione non venga rispettata il modulo presenterà un errore chiamato: NotSameDegreeError.
+Attenzione !!! Per svolgere qualsiasi operazione i vettori devono avere lo stesso numero di componenti e dunque di dimensioni. Qualora questa condizione non venga rispettata il modulo presenterà un errore chiamato: ```NotSameDegreeError```
