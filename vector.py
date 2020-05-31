@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Giorgio Abbadessa - gio.abbadessa@gmail.com """
+# Giorgio Abbadessa - gio.abbadessa@gmail.com
 
 import matplotlib.pyplot as plt
 
