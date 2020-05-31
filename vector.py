@@ -1,6 +1,21 @@
 #!/usr/bin/python3
-
 """ Giorgio Abbadessa - gio.abbadessa@gmail.com """
+
+import matplotlib.pyplot as plt
+def vplot2d(v):
+    plt.plot(v[0], v[1])
+
+def vplot3d(v):
+    pass
+
+def vplot(v):
+    if len(v) == 2:
+        vplot2d(v)
+    if len(v) == 3:
+        vplot3d(v)
+    else:
+        raise TypeError(v, "must be 2d or 3d")
+
 
 class IsntVectorError(TypeError):
     pass
