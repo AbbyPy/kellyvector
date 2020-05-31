@@ -2,20 +2,6 @@
 """ Giorgio Abbadessa - gio.abbadessa@gmail.com """
 
 import matplotlib.pyplot as plt
-def vplot2d(v):
-    plt.plot(v[0], v[1])
-
-def vplot3d(v):
-    pass
-
-def vplot(v):
-    if len(v) == 2:
-        vplot2d(v)
-    if len(v) == 3:
-        vplot3d(v)
-    else:
-        raise TypeError(v, "must be 2d or 3d")
-
 
 class IsntVectorError(TypeError):
     pass
@@ -148,6 +134,15 @@ class Vector:
     def __ge__(self, value):
         """ return self >= value """
         return ((self > value) or (self == value))
+
+    def vplot(self):
+        """ plot self """
+        global plt
+        if len(self) == 2:
+            plt.plot([0, self[0]], [0, self[1]])
+            plt.show()
+        else:
+            raise TypeError(self, "must be 2d")
 
     def easteregg(self):
         print("you've found the easter egg, LOL")
